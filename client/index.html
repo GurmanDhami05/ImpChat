@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>ImpChat</title>
+  </head>
+  <body>
+    <div class="app">
+      <div class="header">
+        <h1>ImpChat</h1>
+        <div class="roomBadge" id="roomBadge"></div>
+      </div>
+      <div class="main">
+        <div class="chatPanel">
+          <div class="joinSection">
+            <h2>Join a room</h2>
+            <div class="joinInputs">
+              <input
+                type="text"
+                id="usernameInput"
+                placeholder="Enter username"
+              />
+              <input type="text" id="roomInput" placeholder="Enter room code" />
+              <button onclick="joinRoom()">Join</button>
+            </div>
+            <p id="joinError"></p>
+          </div>
+
+          <div class="chatSection">
+            <div id="chat"></div>
+            <div class="typingIndicator" id="typingIndicator"></div>
+            <div class="inputBar">
+              <input id="messageInput" placeholder="Type message..." />
+              <button onclick="sendMessage()">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="userPanel">
+          <button class="leaveBtn" id="leaveBtn" onclick="leaveRoom()">
+            Leave Room
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeDM()">
+      <div class="dmModal" id="dmModal" onclick="event.stopPropagation()">
+        <div class="dmHeader">
+          <div class="dmTitleBox">
+            <span>DM with </span><span id="dmTitle"></span>
+          </div>
+          <button class="dmClose" onclick="closeDM()">x</button>
+        </div>
+        <div class="dmMessages" id="dmMessages"></div>
+        <div class="dmInputBar">
+          <input type="text" id="dmInput" placeholder="Type a message..." />
+          <button onclick="sendDM()">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

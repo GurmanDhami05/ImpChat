@@ -1,0 +1,405 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: #1a1a2e;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  width: 800px;
+  height: 500px;
+  background: #16213e;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  display: flex;
+  align-items: center;
+}
+
+.header h1 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.roomBadge {
+  margin-left: auto;
+  background: rgba(46, 213, 115, 0.15);
+  color: #2ed573;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid #2ed573;
+  display: none;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.chatPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.joinSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.joinSection h2 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.joinInputs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.joinSection input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.joinSection input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.joinSection button {
+  background: #e74c3c;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#joinError {
+  color: #e74c3c;
+  font-size: 13px;
+}
+
+.chatSection {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+#chat {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+}
+
+.inputBar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.inputBar input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.inputBar input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.inputBar button {
+  background: #e74c3c;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.inputBar button:hover {
+  background: #c0392b;
+}
+
+.userPanel {
+  width: 150px;
+  display: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.leaveBtn {
+  margin-top: auto;
+  background: rgba(231, 76, 60, 0.15);
+  border: 1px solid #e74c3c;
+  border-radius: 8px;
+  padding: 8px;
+  color: #e74c3c;
+  font-size: 12px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.leaveBtn:hover {
+  background: rgba(231, 76, 60, 0.3);
+}
+
+.userPanel .roomLabel {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.userPanel .userItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+usersPanel .userItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.userAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: white;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.userName {
+  color: #ddd;
+  font-size: 13px;
+}
+
+.message {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  max-width: 75%;
+}
+
+.message.mine {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.message.mine .messageBubble {
+  border-radius: 8px 0 8px 8px;
+}
+
+.message .system {
+  align-self: center;
+  max-width: 100%;
+}
+
+.messageAvatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: white;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.messageBubble {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 0 8px 8px 8px;
+  padding: 7px 10px;
+}
+
+.message.mine .messageBubble {
+  background: rgba(155, 89, 182, 0.2);
+  border-radius: 8px 0 8px 8px;
+}
+
+.messageSender {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.messageText {
+  color: #ddd;
+  font-size: 13px;
+}
+
+.message.system .messageText {
+  color: rgba(255, 255, 255, 0.3);
+  font-style: italic;
+  font-size: 11px;
+}
+
+.typingIndicator {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+  min-height: 18px;
+  padding: 0 4px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay.active {
+  display: flex;
+}
+
+.dmModal {
+  background: #16213e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  width: 400px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dmHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dmHeader span {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.dmClose {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.dmClose:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dmMessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dmInputBar {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dmInputBar input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: white;
+  font-size: 13px;
+  outline: none;
+}
+
+.dmInputBar input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.dmInputBar button {
+  background: #e74c3c;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.dmInputBar button:hover {
+  background: #c0392b;
+}
